@@ -1,5 +1,5 @@
 beautifulsoup4==4.9.3
-bitly-api==git+git://github.com/jimmy927/bitly-api-python
+bitly-api==git+git://github.com/bitly/bitly-api-python.git
 bs4==0.0.1
 certifi==2020.11.8
 chardet==3.0.4
