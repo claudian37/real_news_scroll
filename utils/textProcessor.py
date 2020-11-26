@@ -11,7 +11,7 @@ from wordcloud import WordCloud
 import string
 import matplotlib.pyplot as plt
 
-import bitly_api
+from utils.bitly_api import bitly_api
 from utils.credentials import bitly_auth_keys
 
 class TextProcessor(object):
