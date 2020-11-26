@@ -11,7 +11,7 @@ from wordcloud import WordCloud
 import string
 import matplotlib.pyplot as plt
 
-from utils.bitly_api import bitly_api
+from utils.bitly_api import Connection
 from utils.credentials import bitly_auth_keys
 
 class TextProcessor(object):
@@ -62,7 +62,7 @@ class TextProcessor(object):
 		plt.savefig(path_save, bbox_inches='tight')
 
 	def shorten_url(self, url):
-		bitly = bitly_api.Connection(access_token=bitly_auth_keys['auth_token'])
+		bitly = Connection(access_token=bitly_auth_keys['auth_token'])
 		url_shortened = bitly.shorten(url)
 
 		return url_shortened
