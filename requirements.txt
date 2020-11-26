@@ -1,3 +1,4 @@
+APScheduler==3.6.3
 beautifulsoup4==4.9.3
 bitly-api==0.3
 bs4==0.0.1
@@ -26,5 +27,6 @@ six==1.15.0
 soupsieve==2.0.1
 tqdm==4.53.0
 tweepy==3.9.0
+tzlocal==2.1
 urllib3==1.26.2
 wordcloud==1.8.1
