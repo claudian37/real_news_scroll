@@ -6,7 +6,8 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 sched = BlockingScheduler()
 
-@sched.scheduled_job('cron', day_of_week='mon-sun', hour=8)
+@sched.scheduled_job('interval', minutes1)
+# @sched.scheduled_job('cron', day_of_week='mon-sun', hour=8)
 def tweet_headlines():
     n_headlines = 3
 
