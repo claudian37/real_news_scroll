@@ -2,11 +2,7 @@ import datetime as dt
 from utils.scraperBBC import ScraperBBC
 from utils.textProcessor import TextProcessor
 from utils.twitterManager import TwitterManager
-from apscheduler.schedulers.blocking import BlockingScheduler
 
-sched = BlockingScheduler()
-
-@sched.scheduled_job('interval', minutes=1)
 # @sched.scheduled_job('cron', day_of_week='mon-sun', hour=8)
 def tweet_headlines():
     n_headlines = 3
@@ -48,5 +44,3 @@ def tweet_headlines():
         except Exception as e:
             print(e)
             continue
-
-sched.start()
