@@ -1,6 +1,7 @@
 APScheduler==3.6.3
 beautifulsoup4==4.9.3
-bitly_api==git+git://github.com/bitly/bitly-api-python.git
+bitly-api==0.3
+git+https://github.com/bitly/bitly-api-python.git
 bs4==0.0.1
 certifi==2020.11.8
 chardet==3.0.4
