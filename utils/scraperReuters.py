@@ -9,38 +9,38 @@ class ScraperReuters(object):
 		pass
 
 	def scrape_site(self, url, element, attirbute):
-        """
-        Function to scrape Reuters website using BeautifulSoup. It takes the following functions
-        - url (str): 'https://www.reuters.com/news/world' 
-        - element (str):element to find from scraped results.
-        - attribute (str): attribute to find within element from scraped results.
+		"""
+		Function to scrape Reuters website using BeautifulSoup. It takes the following functions
+		- url (str): 'https://www.reuters.com/news/world' 
+		- element (str):element to find from scraped results.
+		- attribute (str): attribute to find within element from scraped results.
 
-        Returns scraped information in pandas DataFrame
-        """ 
-        response = requests.get(url)
-        results = BeautifulSoup(response.text, 'html.parser')
+		Returns scraped information in pandas DataFrame
+		""" 
+		response = requests.get(url)
+		results = BeautifulSoup(response.text, 'html.parser')
 
-        articles = results.find_all(element, {'class': attribute})
-        all_articles = []
+		articles = results.find_all(element, {'class': attribute})
+		all_articles = []
 
-        for article in articles:
-        	dict_article = {}
+		for article in articles:
+			dict_article = {}
 
-        	headline = article.find('h3')
-        	dict_article['headline'] = headline.text.strip()
+			headline = article.find('h3')
+			dict_article['headline'] = headline.text.strip()
 
-        	link = article.find('a')
-        	dict_article['link'] = url + link['href']
+			link = article.find('a')
+			dict_article['link'] = url + link['href']
 
-        	summary = article.find('p')
-        	dict_article['summary'] = summary.text.strip()
+			summary = article.find('p')
+			dict_article['summary'] = summary.text.strip()
 
-        	dict_article['updated_time'] = dt.datetime.now().strftime('%Y-%m-%d %H:%m')
-        	all_articles.append(dict_article)
+			dict_article['updated_time'] = dt.datetime.now().strftime('%Y-%m-%d %H:%m')
+			all_articles.append(dict_article)
 
-        df = pd.DataFrame.from_dict(all_articles)
+		df = pd.DataFrame.from_dict(all_articles)
 
-        return df
+		return df
 
     def parse_article(url, element, attribute):
     	response = requests.get(url)
