@@ -8,7 +8,7 @@ class ScraperBBC(object):
     def __init__(self):
         pass
 
-    def scrape_site(self, url, element, attribute, news_page=False):
+    def scrape_site(self, url, element, attribute, news_page=True):
         """
         Function to scrape BBC website using BeautifulSoup. It takes the following functions
         - url (str): 'https://www.bbc.co.uk' for homepage; 
