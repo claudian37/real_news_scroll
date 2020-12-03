@@ -42,16 +42,16 @@ class ScraperReuters(object):
 
 		return df
 
-    def parse_article(url, element, attribute):
-    	response = requests.get(url)
-    	results = BeautifulSoup(response.text, 'html.parser')
-    	paragraphs = results.find(element, {'class': attribute})
+	def parse_article(url, element, attribute):
+		response = requests.get(url)
+		results = BeautifulSoup(response.text, 'html.parser')
+		paragraphs = results.find(element, {'class': attribute})
 
-    	try:
-    		article = [a.text for a in paragraphs.find_all('p')]
-    		article = article[:-1] #Exclude authors at the end
-    		article = "".join(article)
-    	except:
-    		article = None
+		try:
+			article = [a.text for a in paragraphs.find_all('p')]
+			article = article[:-1] #Exclude authors at the end
+			article = "".join(article)
+		except:
+			article = None
 
-    	return article
+		return article
