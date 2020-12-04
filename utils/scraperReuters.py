@@ -8,7 +8,7 @@ class ScraperReuters(object):
 	def __init__(self):
 		pass
 
-	def scrape_site(self, url, element, attirbute):
+	def scrape_site(self, url, element, attribute):
 		"""
 		Function to scrape Reuters website using BeautifulSoup. It takes the following functions
 		- url (str): 'https://www.reuters.com/news/world' 
