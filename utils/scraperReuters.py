@@ -42,7 +42,7 @@ class ScraperReuters(object):
 
 		return df
 
-	def parse_article(url, element, attribute):
+	def parse_article(self, url, element, attribute):
 		response = requests.get(url)
 		results = BeautifulSoup(response.text, 'html.parser')
 		paragraphs = results.find(element, {'class': attribute})
