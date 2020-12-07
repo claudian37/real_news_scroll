@@ -30,7 +30,7 @@ class ScraperReuters(object):
 			dict_article['headline'] = headline.text.strip()
 
 			link = article.find('a')
-			dict_article['link'] = url + link['href']
+			dict_article['link'] = url.split('news')[0] + link['href']
 
 			summary = article.find('p')
 			dict_article['summary'] = summary.text.strip()
