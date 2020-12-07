@@ -31,7 +31,7 @@ def tweet_headlines(scraper, url, element_scraper, attribute, element_parser, at
     summary = df_filtered['summary']
     url_shortened = df_filtered['url_short']
     top_keywords = df_filtered['token_frequencies']
-    source = url.split('www.', 1)[1]
+    source = url.split('www.', 1)[1].split('.com')[0]
 
     for i in range(n_headlines):
         message = f"[{dt.datetime.today().strftime('%Y-%m-%d %H:%M')}] {source.upper()} Top Headline ({str(i+1)} of {str(n_headlines)}): " + \
