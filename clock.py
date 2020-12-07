@@ -24,7 +24,7 @@ def scheduled_job():
 						element_scraper=dict_scrapers['element_scraper'][i], 
 						attribute=dict_scrapers['attribute'][i], 
 						element_parser=dict_scrapers['element_parser'][i], 
-						attribute_parser=dict_scrapers['attribute_parser'][i]
+						attribute_parser=dict_scrapers['attribute_parser'][i],
 						n_headlines=3)
 	print('Tweeted at ', dt.datetime.today())
 
