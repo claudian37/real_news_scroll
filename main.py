@@ -41,15 +41,15 @@ def tweet_headlines(scraper, url, element_scraper, attribute, element_parser, at
 
         if len_summary < len(summary[i]):
             message = f"[{time}] {source} Top Headline ({str(i+1)} of {str(n_headlines)}): " + \
-                      f"{headline[i]}. {summary[i][:(len_summary - 3)]}... {url_shortened[i]} #{' #'.join(top_keywords[i].keys())}"
+                      f"{headline[i]}. {summary[i][:(len_summary-4)]}... {url_shortened[i]} #{' #'.join(top_keywords[i].keys())}"
         else: 
 
             message = f"[{time}] {source} Top Headline ({str(i+1)} of {str(n_headlines)}): " + \
                       f"{headline[i]}. {summary[i]} {url_shortened[i]} #{' #'.join(top_keywords[i].keys())}"
         print(len(message))
         print(message)
-        # try:
-        # 	tm.post_tweet(message=message)
-        # except Exception as e:
-        #     print(e)
-        #     continue
+        try:
+        	tm.post_tweet(message=message)
+        except Exception as e:
+            print(e)
+            continue
