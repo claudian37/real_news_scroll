@@ -6,14 +6,14 @@ import datetime as dt
 
 sched = BlockingScheduler()
 bbc_scraper = ScraperBBC()
-reuters_scrapper = ScraperReuters()
+reuters_scraper = ScraperReuters()
 
-dict_scrapers = {'scraper': [bbc_scraper, reuters_scrapper],
+dict_scrapers = {'scraper': [bbc_scraper, reuters_scraper],
 				 'url': ['https://www.bbc.co.uk/news', 'https://www.reuters.com/news/world'],
 				 'element_scraper': ['div', 'div'],
 				 'attribute': ['gs-c-promo', 'story-content'],
 				 'element_parser': ['article', 'div'],
-				 'attribute_parser': ['StandardArticleBody_body', 'StandardArticleBody_body']}
+				 'attribute_parser': ['ArticleBodyWrapper', 'ArticleBodyWrapper']}
 
 @sched.scheduled_job('interval', minutes=1)
 # @sched.scheduled_job('cron', day_of_week='mon-sun', hour=12)

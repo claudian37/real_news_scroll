@@ -30,7 +30,7 @@ class ScraperReuters(object):
 			dict_article['headline'] = headline.text.strip()
 
 			link = article.find('a')
-			dict_article['link'] = url.split('/news')[0] + link['href']
+			dict_article['link'] = 'https://www.reuters.com' + link['href']
 
 			summary = article.find('p')
 			dict_article['summary'] = summary.text.strip()
@@ -47,11 +47,10 @@ class ScraperReuters(object):
 		results = BeautifulSoup(response.text, 'html.parser')
 		paragraphs = results.find(element, {'class': attribute})
 
-		try:
-			article = [a.text for a in paragraphs.find_all('p')]
-			article = article[:-1] #Exclude authors at the end
-			article = "".join(article)
-		except:
-			article = None
+		article = [a.text for a in paragraphs.find_all('p')]
+		article = article[2:-2] #Exclude authors 
+		article = "".join(article)
+		# except:
+		# 	article = None
 
 		return article
