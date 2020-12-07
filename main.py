@@ -22,6 +22,7 @@ def tweet_headlines(scraper, url, element_scraper, attribute, element_parser, at
     df_filtered['url_short'] = df_filtered['link'].apply(lambda x: tp.shorten_url(x)['url'])
 
     print(df_filtered.head())
+    print(df_filtered['token_frequencies'].head())
 
     # Post to twitter
     tm = TwitterManager()
@@ -37,8 +38,8 @@ def tweet_headlines(scraper, url, element_scraper, attribute, element_parser, at
         message = f"[{dt.datetime.today().strftime('%Y-%m-%d %H:%M')}] {source.upper()} Top Headline ({str(i+1)} of {str(n_headlines)}): " + \
                   f"{headline[i]}. {summary[i]} {url_shortened[i]} #{' #'.join(top_keywords[i].keys())}"
         print(len(message))
-        try:
-        	tm.post_tweet(message=message)
-        except Exception as e:
-            print(e)
-            continue
+        # try:
+        # 	tm.post_tweet(message=message)
+        # except Exception as e:
+        #     print(e)
+        #     continue
