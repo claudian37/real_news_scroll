@@ -15,7 +15,7 @@ dict_scrapers = {'scraper': [bbc_scraper, reuters_scrapper],
 				 'element_parser': ['article', 'div'],
 				 'attribute_parser': ['StandardArticleBody_body', 'StandardArticleBody_body']}
 
-@sched.scheduled_job('interval', minutes=5)
+@sched.scheduled_job('interval', minutes=1)
 # @sched.scheduled_job('cron', day_of_week='mon-sun', hour=12)
 def scheduled_job():
 	for i in range(2):
