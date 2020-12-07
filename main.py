@@ -21,7 +21,8 @@ def tweet_headlines(scraper, url, element_scraper, attribute, element_parser, at
     df_filtered['token_frequencies'] = df_filtered.apply(lambda x: tp.get_word_token_frequencies(x['cleaned_text'], n_tokens=5), axis=1)
     df_filtered['url_short'] = df_filtered['link'].apply(lambda x: tp.shorten_url(x)['url'])
 
-    print(df_filtered.head())
+    print(df_filtered['article'].head())
+    print(df_filtered['cleaned_text'].head())
     print(df_filtered['token_frequencies'].head())
 
     # Post to twitter
