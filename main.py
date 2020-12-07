@@ -2,14 +2,17 @@ import datetime as dt
 from utils.textProcessor import TextProcessor
 from utils.twitterManager import TwitterManager
 
-def tweet_headlines(scraper, url, element_scraper, attribute, element_parser, n_headlines=3):
+def tweet_headlines(scraper, url, element_scraper, attribute, element_parser, attribute_parser, n_headlines=3):
     # Scrape headlines and articles
     df = scraper.scrape_site(url=url, 
     	                     element=element_scraper, 
     	                     attribute=attribute)
 
     df_filtered = df[:n_headlines].copy()
-    df_filtered['article'] = df_filtered['link'].apply(lambda x: scraper.parse_article(url=x, element=element_parser))
+    if 'reuters' in url:
+        df_filtered['article'] = df_filtered['link'].apply(lambda x: scraper.parse_article(url=x, element=element_parser, attribute=attribute_parser))
+    else:
+        df_filtered['article'] = df_filtered['link'].apply(lambda x: scraper.parse_article(url=x, element=element_parser))
 
     # Process scraped articles
     tp = TextProcessor()

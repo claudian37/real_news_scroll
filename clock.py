@@ -12,7 +12,8 @@ dict_scrapers = {'scraper': [bbc_scraper, reuters_scrapper],
 				 'url': ['https://www.bbc.co.uk/news', 'https://www.reuters.com/news/world'],
 				 'element_scraper': ['div', 'div'],
 				 'attribute': ['gs-c-promo', 'story-content'],
-				 'element_parser': ['article', 'StandardArticleBody_body']}
+				 'element_parser': ['article', 'div'],
+				 'attribute_parser': [None, 'StandardArticleBody_body']}
 
 @sched.scheduled_job('interval', minutes=5)
 # @sched.scheduled_job('cron', day_of_week='mon-sun', hour=12)
@@ -23,6 +24,7 @@ def scheduled_job():
 						element_scraper=dict_scrapers['element_scraper'][i], 
 						attribute=dict_scrapers['attribute'][i], 
 						element_parser=dict_scrapers['element_parser'][i], 
+						attribute_parser=dict_scrapers['attribute_parser'][i]
 						n_headlines=3)
 	print('Tweeted at ', dt.datetime.today())
 
