@@ -15,8 +15,8 @@ dict_scrapers = {'scraper': [bbc_scraper, reuters_scraper],
 				 'element_parser': ['article', 'div'],
 				 'attribute_parser': ['ArticleBodyWrapper', 'ArticleBodyWrapper']}
 
-@sched.scheduled_job('interval', minutes=5)
-# @sched.scheduled_job('cron', day_of_week='mon-sun', hour=12)
+# @sched.scheduled_job('interval', minutes=5)
+@sched.scheduled_job('cron', day_of_week='mon-sun', hour=12)
 def scheduled_job():
 	for i in range(2):
 		tweet_headlines(scraper=dict_scrapers['scraper'][i], 
