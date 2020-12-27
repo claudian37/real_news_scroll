@@ -10,7 +10,7 @@ class ScraperBBC(object):
 
     def scrape_site(self, url, element, attribute, news_page=True):
         """
-        Function to scrape BBC website using BeautifulSoup. It takes the following functions
+        Function to scrape BBC website using BeautifulSoup. It takes the following arguments:
         - url (str): 'https://www.bbc.co.uk' for homepage; 
                       'https://www.bbc.co.uk/news' for news page.
         - element (str):element to find from scraped results.
@@ -62,14 +62,22 @@ class ScraperBBC(object):
 
         return df
 
-    def parse_article(self, url, element):
+    def parse_article(self, url, element, attribute=None):
+        """
+        Function to parse each article. It takes the following arguments:
+        - url (str): links to articles from top headlines scraped returned from scrape_site() function
+        - element (str): element to find article from scraped results.
+		- attribute (str): attribute to find within element from scraped results.
+
+        Returns scraped information as a str.
+        """
         response = requests.get(url)
         results = BeautifulSoup(response.text, 'lxml')
         paragraphs = results.find(element)
 
         try:
             article = [p.text for p in paragraphs if (p.text != '') and ('image' not in p.text) and ('media caption' not in p.text)]
-            article = article[1:-2] # Exclude title at the start, and "related topics" at the end 
+            article = article[1:-2]     # Exclude title at the start, and "related topics" at the end
             article = " ".join(article)
         except:
             article = None

@@ -4,7 +4,7 @@ import nltk
 nltk.download('punkt')
 nltk.download('stopwords')
 
-from nltk import word_tokenize, sent_tokenize
+from nltk import word_tokenize
 from nltk.corpus import stopwords
 from nltk.probability import FreqDist
 from wordcloud import WordCloud

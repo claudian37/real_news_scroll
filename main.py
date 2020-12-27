@@ -2,17 +2,14 @@ import datetime as dt
 from utils.textProcessor import TextProcessor
 from utils.twitterManager import TwitterManager
 
-def tweet_headlines(scraper, url, element_scraper, attribute, element_parser, attribute_parser, n_headlines=5):
+def tweet_headlines(scraper, url, element_scraper, attribute, element_parser, attribute_parser, n_headlines=3):
     # Scrape headlines and articles
     df = scraper.scrape_site(url=url, 
     	                     element=element_scraper, 
     	                     attribute=attribute)
 
     df_filtered = df[:n_headlines].copy()
-    if 'reuters' in url:
-        df_filtered['article'] = df_filtered['link'].apply(lambda x: scraper.parse_article(url=x, element=element_parser, attribute=attribute_parser))
-    else:
-        df_filtered['article'] = df_filtered['link'].apply(lambda x: scraper.parse_article(url=x, element=element_parser))
+    df_filtered['article'] = df_filtered['link'].apply(lambda x: scraper.parse_article(url=x, element=element_parser, attribute=attribute_parser))
 
     # Process scraped articles
     tp = TextProcessor()
@@ -21,8 +18,8 @@ def tweet_headlines(scraper, url, element_scraper, attribute, element_parser, at
     df_filtered['token_frequencies'] = df_filtered.apply(lambda x: tp.get_word_token_frequencies(x['cleaned_text'], n_tokens=5), axis=1)
     df_filtered['url_short'] = df_filtered['link'].apply(lambda x: tp.shorten_url(x)['url'])
 
-    tm = TwitterManager()
     # Post to twitter
+    tm = TwitterManager()
     tm.authenticate()
 
     time = dt.datetime.today().strftime('%Y-%m-%d %H:%M')
@@ -49,7 +46,7 @@ def tweet_headlines(scraper, url, element_scraper, attribute, element_parser, at
         print(len(message))
         print(message)
         try:
-        	tm.post_tweet(message=message)
+            tm.post_tweet(message=message)
         except Exception as e:
             print(e)
             continue
