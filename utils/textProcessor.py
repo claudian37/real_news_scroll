@@ -8,7 +8,6 @@ from nltk import word_tokenize, sent_tokenize
 from nltk.corpus import stopwords
 from nltk.probability import FreqDist
 from wordcloud import WordCloud
-import string
 import matplotlib.pyplot as plt
 
 from utils.bitly_api import Connection

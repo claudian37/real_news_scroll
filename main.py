@@ -2,7 +2,7 @@ import datetime as dt
 from utils.textProcessor import TextProcessor
 from utils.twitterManager import TwitterManager
 
-def tweet_headlines(scraper, url, element_scraper, attribute, element_parser, attribute_parser, n_headlines=3):
+def tweet_headlines(scraper, url, element_scraper, attribute, element_parser, attribute_parser, n_headlines=5):
     # Scrape headlines and articles
     df = scraper.scrape_site(url=url, 
     	                     element=element_scraper, 

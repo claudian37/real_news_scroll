@@ -50,7 +50,5 @@ class ScraperReuters(object):
 		article = [a.text for a in paragraphs.find_all('p')]
 		article = article[2:-2] #Exclude authors 
 		article = "".join(article)
-		# except:
-		# 	article = None
 
 		return article

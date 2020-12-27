@@ -1,5 +1,5 @@
-# DS 
 *.DS_Store
+*.idea
 
 # Test file
 test.py
