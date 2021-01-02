@@ -9,14 +9,14 @@ class ScraperNYTimes(object):
 		pass
 
 	def scrape_site(self, url, element, attribute=None):
-	"""
-	Function to scrape NYTimes website using BeautifulSoup. It takes the following functions
-	- url (str): 'https://www.nytimes.com/section/world'
-	- element (str): element to find from scraped results.
-	- attribute (str): attribute to find within element from scraped results.
+		"""
+		Function to scrape NYTimes website using BeautifulSoup. It takes the following functions
+		- url (str): 'https://www.nytimes.com/section/world'
+		- element (str): element to find from scraped results.
+		- attribute (str): attribute to find within element from scraped results.
 
-	Returns scraped information in pandas DataFrame
-	"""
+		Returns scraped information in pandas DataFrame
+		"""
 		response = requests.get(url)
 		results = BeautifulSoup(response.text, 'html.parser')
 
@@ -46,13 +46,13 @@ class ScraperNYTimes(object):
 		return df
 
 	def parse_article(self, url, element, attribute=None):
-	"""
-	Function to parse each article. It takes the following arguments:
-	- url (str): links to articles from top headlines scraped returned from scrape_site() function
-	- element (str): element to find article from scraped results.
+		"""
+		Function to parse each article. It takes the following arguments:
+		- url (str): links to articles from top headlines scraped returned from scrape_site() function
+		- element (str): element to find article from scraped results.
 
-	Returns scraped information as a str.
-	"""
+		Returns scraped information as a str.
+		"""
 		response = requests.get(url)
 		results = BeautifulSoup(response.text, 'html.parser')
 		paragraphs = results.find(element)
