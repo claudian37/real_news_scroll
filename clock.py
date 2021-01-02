@@ -1,7 +1,7 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
 from utils.scraperBBC import ScraperBBC
 from utils.scraperReuters import ScraperReuters
-from utils.scraperNYTimes import  import ScraperNYTimes
+from utils.scraperNYTimes import ScraperNYTimes
 from main import tweet_headlines
 import datetime as dt
 
