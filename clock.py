@@ -34,8 +34,8 @@ all_scrapers = [
      }
 ]
 
-@sched.scheduled_job('interval', minutes=5)
-# @sched.scheduled_job('cron', day_of_week='mon-sun', hour=12)
+# @sched.scheduled_job('interval', minutes=5)
+@sched.scheduled_job('cron', day_of_week='mon-sun', hour=12)
 def scheduled_job():
 	for i in range(len(all_scrapers)):
 		tweet_headlines(scraper=all_scrapers[i]['scraper'],
