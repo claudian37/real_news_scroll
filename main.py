@@ -32,20 +32,20 @@ def tweet_headlines(scraper, url, element_scraper, attribute, element_parser, at
     twitter_char_limit = 280
 
     for i in range(n_headlines):
-        len_no_summary = len(f"[{time}] {source} Top Headline ({str(i+1)} of {str(n_headlines)}): " + \
-                  f"{headline[i]}. {url_shortened[i]} #{' #'.join(top_keywords[i].keys())}")
-        len_summary = twitter_char_limit - len_no_summary
-
-        if len_summary < len(summary[i]):
-            message = f"[{time}] {source} Top Headline ({str(i+1)} of {str(n_headlines)}): " + \
-                      f"{headline[i]}. {summary[i][:(len_summary-4)]}... {url_shortened[i]} #{' #'.join(top_keywords[i].keys())}"
-        else: 
-
-            message = f"[{time}] {source} Top Headline ({str(i+1)} of {str(n_headlines)}): " + \
-                      f"{headline[i]}. {summary[i]} {url_shortened[i]} #{' #'.join(top_keywords[i].keys())}"
-        print(len(message))
-        print(message)
         try:
+            len_no_summary = len(f"[{time}] {source} Top Headline ({str(i+1)} of {str(n_headlines)}): " + \
+                      f"{headline[i]}. {url_shortened[i]} #{' #'.join(top_keywords[i].keys())}")
+            len_summary = twitter_char_limit - len_no_summary
+
+            if len_summary < len(summary[i]):
+                message = f"[{time}] {source} Top Headline ({str(i+1)} of {str(n_headlines)}): " + \
+                          f"{headline[i]}. {summary[i][:(len_summary-4)]}... {url_shortened[i]} #{' #'.join(top_keywords[i].keys())}"
+            else:
+
+                message = f"[{time}] {source} Top Headline ({str(i+1)} of {str(n_headlines)}): " + \
+                          f"{headline[i]}. {summary[i]} {url_shortened[i]} #{' #'.join(top_keywords[i].keys())}"
+            print(len(message))
+            print(message)
             tm.post_tweet(message=message)
         except Exception as e:
             print(e)
