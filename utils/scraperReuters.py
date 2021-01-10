@@ -33,7 +33,8 @@ class ScraperReuters(object):
 			dict_article['link'] = 'https://www.reuters.com' + link['href']
 
 			summary = article.find('p')
-			dict_article['summary'] = summary.text.strip()
+			if summary:
+				dict_article['summary'] = summary.text.strip()
 
 			dict_article['updated_time'] = dt.datetime.now().strftime('%Y-%m-%d %H:%m')
 			all_articles.append(dict_article)

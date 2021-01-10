@@ -18,9 +18,9 @@ all_scrapers = [
      },
     {
         'scraper': ScraperReuters(),
-        'url': 'https://www.reuters.com/news/world',
-        'element_scraper': 'div',
-        'attribute': 'story-content',
+        'url': 'https://www.reuters.com/world',
+        'element_scraper': 'article',
+        'attribute': 'story',
         'element_parser': 'div',
         'attribute_parser': 'ArticleBodyWrapper'
      },
